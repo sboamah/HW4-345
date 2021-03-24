@@ -10,7 +10,7 @@ console.log = function(){};
 
 describe("GitHub EndPoint Tests", function() {
 
-    this.timeout(5000);
+    this.timeout(5000);          
     it("listAuthenicatedUserRepos returns repo objects", async function() {
         
         let repos = await github.listAuthenicatedUserRepos();
@@ -22,6 +22,11 @@ describe("GitHub EndPoint Tests", function() {
       let user  = await github.getUser();
       let repos = await github.listBranches(user,"HW4-345");
       expect(repos).to.be.an('array').that.have.nested.property("[0].name").equals("master");
+      
+      await octokit.request('GET /repos/{owner}/{repo}/branches', {
+        owner: user,
+        repo: 'HW4-345'
+      })
 
     });
 
@@ -29,6 +34,9 @@ describe("GitHub EndPoint Tests", function() {
         
       let user  = await github.getUser();
       let status = await github.createRepo(user, "test-HW4-345");
+      await octokit.request('POST /user/repos', {
+        name: 'test-HW4-345'
+      })
       expect(status).to.equal(201);
 
     });
@@ -38,7 +46,13 @@ describe("GitHub EndPoint Tests", function() {
       
       let user  = await github.getUser();
       let status = await github.createIssue(user, "HW4-345", "issue name", "issue body");
+      await octokit.request('POST /repos/{owner}/{repo}/issues', {
+        owner: user,
+        repo: 'HW4-345',
+        title: 'issue name'
+      })
       expect(status).to.equal(201);
+      
 
     });
 
@@ -46,7 +60,11 @@ describe("GitHub EndPoint Tests", function() {
       
       let user  = await github.getUser();
       let response = await github.enableWikiSupport(user, "HW4-345");
-
+      await octokit.request('PATCH /repos/{owner}/{repo}', {
+        owner: user,
+        repo: 'HW4-345',
+        name: 'name'
+      })
       expect(response).to.have.property('has_wiki');
       expect(response.has_wiki).to.equal(true);
     });
