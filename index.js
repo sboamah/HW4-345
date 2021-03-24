@@ -95,7 +95,10 @@ function listAuthenicatedUserRepos()
 async function listBranches(owner,repo)
 {
 	let options = getDefaultOptions(`/`, "GET");
-
+	await octokit.request('GET /repos/{owner}/{repo}/branches', {
+        owner: 'owner',
+        repo: 'repo'
+      });
 	// Send a http request to url and specify a callback that will be called upon its return.
 	return new Promise(function(resolve, reject)
 	{
@@ -106,13 +109,16 @@ async function listBranches(owner,repo)
 
 		});
 	});
+
 }
 
 // 2. Write code to create a new repo
 async function createRepo(owner,repo)
 {
 	let options = getDefaultOptions("/", "POST");
-
+	await octokit.request('POST /user/repos', {
+        name: 'name'
+    });
 	// Send a http request to url and specify a callback that will be called upon its return.
 	return new Promise(function(resolve, reject)
 	{
@@ -128,7 +134,11 @@ async function createRepo(owner,repo)
 async function createIssue(owner,repo, issueName, issueBody)
 {
 	let options = getDefaultOptions("/", "POST");
-
+	await octokit.request('POST /repos/{owner}/{repo}/issues', {
+        owner: 'owner',
+        repo: 'repo',
+        title: issueName
+      });
 	// Send a http request to url and specify a callback that will be called upon its return.
 	return new Promise(function(resolve, reject)
 	{
@@ -144,7 +154,11 @@ async function createIssue(owner,repo, issueName, issueBody)
 async function enableWikiSupport(owner,repo)
 {
 	let options = getDefaultOptions("/", "PATCH");
-
+	await octokit.request('PATCH /repos/{owner}/{repo}', {
+        owner: 'owner',
+        repo: 'repo',
+        name: 'name'
+      });
 	// Send a http request to url and specify a callback that will be called upon its return.
 	return new Promise(function(resolve, reject)
 	{
