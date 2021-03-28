@@ -1,3 +1,9 @@
+# Summary
+The homework overall was an interesting and complex experience. I have prior knowledge of Javascript but only for front-end development and UI work. I've never done API implementation before so this homework was very helpful in learning the basics. I gained some assistance from my peers, especially with the JSON.stringify method and understanding what each function meant and was doing. From my screencast, you can see that I was able to get the server to work. However, in the video not all of the curl commands were shown to garner the results shown in the lab instructions because I ran the first POST command off screen. To summarize my results in the Command Window, the terminal shows an error prior to when it is supposed to because of the curl command I ran off screen. The hardest part of the homework was understanding how the server works and using those curl commands at first. I hope to get the hang of using a server as the semester goes on. 
+
+[See Sylvia's screencast.](https://stevens.zoom.us/rec/play/xpPoCCE4g8ZQBFbAFg5SaQovbGBETWB4F7BgBuvB72j-UbatIWkB4rAelMMjw9Y0Vx4yt8uPbhGN2cy6.8O2IoJYPRFFsJGxm)
+
+
 # Introduction
 
 A *RESTful architecture*, is an architectural style ([Fielding](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)) for providing resources to clients using a set of request verbs and resource locations. A REST API allows a client to access resources provided by a service.
